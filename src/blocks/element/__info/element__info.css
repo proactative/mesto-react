@@ -1,0 +1,11 @@
+.element__info {
+  width: 282px;
+  padding: 26.7px 21px 26.7px 19px;
+  background: #FFFFFF;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}

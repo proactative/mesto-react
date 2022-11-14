@@ -1,0 +1,23 @@
+.profile__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+  padding-left: 4.3px;
+  box-sizing: border-box;
+  width: calc(100% - 196px);/*изменила*/
+}
+
+@media screen and (max-width: 900px) {
+  .profile__info {
+    padding-top: 22.25px;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .profile__info {
+    gap: 0;
+    padding-left: 0;
+  }
+}

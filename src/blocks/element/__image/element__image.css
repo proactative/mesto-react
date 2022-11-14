@@ -1,0 +1,16 @@
+.element__image {
+  width: 282px;
+  height: 282px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.element__image:hover {
+  opacity: .6;
+}
+
+.element__image[alt] {
+  color: #fff;
+}

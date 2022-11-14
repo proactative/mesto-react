@@ -1,0 +1,15 @@
+.profile__avatar-container {
+  position: relative;
+}
+
+.profile__avatar-container:hover {
+  cursor: pointer;
+}
+
+.profile__avatar-container:hover  .profile__avatar {
+  opacity: .4;
+}
+
+.profile__avatar-container:hover .profile__avatar-edit-sign {
+ visibility: visible;
+}

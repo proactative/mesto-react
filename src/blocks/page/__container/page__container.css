@@ -1,0 +1,19 @@
+.page__container {
+  width: 880px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+@media screen and (max-width: 900px) {
+  .page__container {
+    width: calc(282px * 2 + 17px);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .page__container {
+    width: 100%;
+  }
+}

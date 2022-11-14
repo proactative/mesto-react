@@ -1,0 +1,13 @@
+.profile__title-container {
+  display: flex;
+  gap: 18px;
+  margin-right: 244px;
+  position: relative;
+}
+
+@media screen and (max-width: 900px) {
+  .profile__title-container {
+    margin-right: 0;
+    justify-content: center;
+  }
+}

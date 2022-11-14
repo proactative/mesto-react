@@ -1,0 +1,12 @@
+.element {
+  width: 282px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+@media screen and (max-width: 600px) {
+  .element {
+    justify-self: center;
+  }
+}

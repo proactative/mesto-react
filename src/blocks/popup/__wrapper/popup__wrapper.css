@@ -1,0 +1,4 @@
+.popup__wrapper {
+  position: relative;
+  z-index: 3;
+}

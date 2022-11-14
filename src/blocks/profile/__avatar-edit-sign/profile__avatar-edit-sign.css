@@ -1,0 +1,14 @@
+.profile__avatar-edit-sign {
+  background-image: url('../../../images/profile-avatar-edit.svg');
+  position: absolute;
+  top: calc(50% - 13px);
+  left: calc(50% - 29px);
+  z-index: 2;
+  width: 26px;
+  height: 26px;
+  visibility: hidden;
+  border: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+}
