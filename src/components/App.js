@@ -42,8 +42,8 @@ function App() {
 
   function closeViaOverlayClick(event) {
     if (event.target.classList.contains('popup')) {
-        closeAllPopups();
-    } 
+      closeAllPopups();
+    }
   }
 
   //for opening chosen card
@@ -56,12 +56,12 @@ function App() {
     <div className="page">
       <div className="page__container">
         <Header />
-        <Main 
-        onUpdateAvatar = {handleUpdateAvatarClick} onUpdateProfile = {handleUpdateProfileClick} onAddElement = {handleAddElementClick} 
-        onCardClick={handleCardClick} onDeleteClick={handleEConfirmDeletionClick} />
+        <Main
+          onUpdateAvatar={handleUpdateAvatarClick} onUpdateProfile={handleUpdateProfileClick} onAddElement={handleAddElementClick}
+          onCardClick={handleCardClick} onDeleteClick={handleEConfirmDeletionClick} />
         <Footer />
 
-        <ImagePopup  card={selectedCard} onClose={closeAllPopups} onOverlay={closeViaOverlayClick}/>
+        <ImagePopup card={selectedCard} onClose={closeAllPopups} onOverlay={closeViaOverlayClick} />
 
         //update avatar
         <PopupWithForm name="update-avatar" title="Обновить&nbsp;аватар" button="Сохранить" isOpen={isUpdateAvatarPopupOpen} onCloseIcon={closeAllPopups} onOverlay={closeViaOverlayClick}>
@@ -95,7 +95,7 @@ function App() {
           <fieldset className="popup__inputs">
             <label className="popup__label">
               <input className="popup__input popup__input_type_place-name" name="place-name" id="place-name" type="text"
-                value="" placeholder="Название" required minlength="2" maxlength="30"  />
+                value="" placeholder="Название" required minlength="2" maxlength="30" />
               <span className="popup__error" id="place-name-error"></span>
             </label>
             <label className="popup__label">
@@ -107,10 +107,10 @@ function App() {
         </PopupWithForm>
 
         //confirm deletion
-        <PopupWithForm name="deletion-confirm" title="Вы уверены?" button="Да" isOpen={isConfirmDeletionPopupOpen} onCloseIcon={closeAllPopups} onOverlay={closeViaOverlayClick}/>
+        <PopupWithForm name="deletion-confirm" title="Вы уверены?" button="Да" isOpen={isConfirmDeletionPopupOpen} onCloseIcon={closeAllPopups} onOverlay={closeViaOverlayClick} />
 
       </div>
-    </div> 
+    </div>
   );
 }
 

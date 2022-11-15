@@ -1,6 +1,5 @@
 import React from 'react';
-
-import {api} from '../utils/api.js';
+import { api } from '../utils/api.js';
 import Card from './Card.js';
 
 function Main(props) {
@@ -12,23 +11,23 @@ function Main(props) {
 
   React.useEffect(() => {
     Promise.all([api.getUserInfo(), api.getInitialCards()])
-    .then(([data, cards]) => {
+      .then(([data, cards]) => {
         setUserName(data.name)
         setUserDescription(data.about)
         setUserAvatar(data.avatar)
         setCards(cards)
-    })
-    .catch((err) => {
+      })
+      .catch((err) => {
         console.log(`Ошибка: ${err}`);
-    })
-    }, []);
+      })
+  }, []);
 
   return (
-      <main className="content">
+    <main className="content">
 
       <section className="profile">
         <div className="profile__avatar-container">
-          <img className="profile__avatar" src={userAvatar} alt="Мой аватар" onClick={props.onUpdateAvatar}/>
+          <img className="profile__avatar" src={userAvatar} alt="Мой аватар" onClick={props.onUpdateAvatar} />
           <div className="profile__avatar-edit-sign"></div>
         </div>
         <div className="profile__info">
@@ -42,9 +41,9 @@ function Main(props) {
       </section>
 
       <section className="elements">
-      {cards.map((card) => (
-                    <Card key={card._id} card={card} onCardClick={props.onCardClick} onDeleteClick={props.onDeleteClick}></Card>
-                ))}
+        {cards.map((card) => (
+          <Card key={card._id} card={card} onCardClick={props.onCardClick} onDeleteClick={props.onDeleteClick}></Card>
+        ))}
       </section>
     </main>
   )
@@ -54,7 +53,7 @@ function Main(props) {
 
 // function handleEditAvatarClick() {
 //   document.querySelector('.popup_type_update-avatar').classList.add('popup_opened');
- 
+
 // }
 
 // function handleEditProfileClick() {
