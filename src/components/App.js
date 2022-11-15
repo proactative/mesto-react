@@ -63,7 +63,7 @@ function App() {
 
         <ImagePopup card={selectedCard} onClose={closeAllPopups} onOverlay={closeViaOverlayClick} />
 
-        //update avatar
+        {/*update avatar*/}
         <PopupWithForm name="update-avatar" title="Обновить&nbsp;аватар" button="Сохранить" isOpen={isUpdateAvatarPopupOpen} onCloseIcon={closeAllPopups} onOverlay={closeViaOverlayClick}>
           <fieldset className="popup__inputs">
             <label className="popup__label">
@@ -74,7 +74,7 @@ function App() {
           </fieldset>
         </PopupWithForm>
 
-        //update profile
+        {/*update profile*/}
         <PopupWithForm name="edit-profile" title="Редактировать&nbsp;профиль" button="Сохранить" isOpen={isUpdateProfilePopupOpen} onCloseIcon={closeAllPopups} onOverlay={closeViaOverlayClick}>
           <fieldset className="popup__inputs">
             <label className="popup__label">
@@ -90,7 +90,7 @@ function App() {
           </fieldset>
         </PopupWithForm>
 
-        //add element
+        {/*add element*/}
         <PopupWithForm name="add-element" title="Новое&nbsp;место" button="Создать" isOpen={isAddElementPopupOpen} onCloseIcon={closeAllPopups} onOverlay={closeViaOverlayClick}>
           <fieldset className="popup__inputs">
             <label className="popup__label">
@@ -106,7 +106,7 @@ function App() {
           </fieldset>
         </PopupWithForm>
 
-        //confirm deletion
+        {/*confirm deletion*/}
         <PopupWithForm name="deletion-confirm" title="Вы уверены?" button="Да" isOpen={isConfirmDeletionPopupOpen} onCloseIcon={closeAllPopups} onOverlay={closeViaOverlayClick} />
 
       </div>

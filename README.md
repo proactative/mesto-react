@@ -8,3 +8,4 @@
 - Api запросов;
 
 ## **Ссылка на GitHub Pages**
+https://proactative.github.io/mesto-react/
