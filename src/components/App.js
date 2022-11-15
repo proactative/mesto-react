@@ -14,7 +14,7 @@ function App() {
   const [isAddElementPopupOpen, setIsAddElementPopupOpen] = React.useState(false);
   const [isConfirmDeletionPopupOpen, setIsConfirmDeletionPopupOpen] = React.useState(false);
 
-  //открытие всех попапов
+  //open all popups
   function handleUpdateAvatarClick() {
     setIsUpdateAvatarPopupOpen(true);
   }
@@ -31,13 +31,13 @@ function App() {
     setIsConfirmDeletionPopupOpen(true);
   }
 
-  //закрытие всех попапов
+  //close all popups
   function closeAllPopups() {
     setIsUpdateAvatarPopupOpen(false);
     setIsUpdateProfilePopupOpen(false);
     setIsAddElementPopupOpen(false);
     setIsConfirmDeletionPopupOpen(false);
-    //setSelectedCard(null);
+    setSelectedCard(null);
   }
 
   function closeViaOverlayClick(event) {
@@ -46,13 +46,22 @@ function App() {
     } 
   }
 
+  //for opening chosen card
+  const [selectedCard, setSelectedCard] = React.useState();
+  function handleCardClick(card) {
+    setSelectedCard(card)
+  }
+
   return (
     <div className="page">
       <div className="page__container">
         <Header />
-        <Main onUpdateAvatar = {handleUpdateAvatarClick} onUpdateProfile = {handleUpdateProfileClick} onAddElement = {handleAddElementClick}/>
+        <Main 
+        onUpdateAvatar = {handleUpdateAvatarClick} onUpdateProfile = {handleUpdateProfileClick} onAddElement = {handleAddElementClick} 
+        onCardClick={handleCardClick} onDeleteClick={handleEConfirmDeletionClick} />
         <Footer />
-        <ImagePopup />
+
+        <ImagePopup  card={selectedCard} onClose={closeAllPopups} onOverlay={closeViaOverlayClick}/>
 
         //update avatar
         <PopupWithForm name="update-avatar" title="Обновить&nbsp;аватар" button="Сохранить" isOpen={isUpdateAvatarPopupOpen} onCloseIcon={closeAllPopups} onOverlay={closeViaOverlayClick}>
