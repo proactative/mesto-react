@@ -47,7 +47,7 @@ function App() {
   }
 
   //for opening chosen card
-  const [selectedCard, setSelectedCard] = React.useState();
+  const [selectedCard, setSelectedCard] = React.useState(null);
   function handleCardClick(card) {
     setSelectedCard(card)
   }
