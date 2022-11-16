@@ -67,7 +67,7 @@ function App() {
         <PopupWithForm name="update-avatar" title="Обновить&nbsp;аватар" button="Сохранить" isOpen={isUpdateAvatarPopupOpen} onCloseIcon={closeAllPopups} onOverlay={closeViaOverlayClick}>
           <fieldset className="popup__inputs">
             <label className="popup__label">
-              <input className="popup__input popup__input_type_link" name="avatar-link" type="url" value="" id="avatar-link"
+              <input className="popup__input popup__input_type_link" name="avatar-link" type="url" id="avatar-link"
                 placeholder="https://somewebsite.com/someimage.jpg" required />
               <span className="popup__error" id="avatar-link-error"></span>
             </label>
@@ -78,13 +78,13 @@ function App() {
         <PopupWithForm name="edit-profile" title="Редактировать&nbsp;профиль" button="Сохранить" isOpen={isUpdateProfilePopupOpen} onCloseIcon={closeAllPopups} onOverlay={closeViaOverlayClick}>
           <fieldset className="popup__inputs">
             <label className="popup__label">
-              <input className="popup__input popup__input_type_name" id="full-name" name="full-name" type="text" value=""
-                placeholder="Имя" minlength="2" maxlength="40" required />
+              <input className="popup__input popup__input_type_name" id="full-name" name="full-name" type="text" 
+                placeholder="Имя" minLength="2" maxLength="40" required />
               <span className="popup__error" id="full-name-error">ошибка</span>
             </label>
             <label className="popup__label">
-              <input className="popup__input popup__input_type_job" id="job" name="job" type="text" value="" minlength="2"
-                maxlength="200" placeholder="О себе" required />
+              <input className="popup__input popup__input_type_job" id="job" name="job" type="text"  minLength="2"
+                maxLength="200" placeholder="О себе" required />
               <span className="popup__error" id="job-error"></span>
             </label>
           </fieldset>
@@ -95,11 +95,11 @@ function App() {
           <fieldset className="popup__inputs">
             <label className="popup__label">
               <input className="popup__input popup__input_type_place-name" name="place-name" id="place-name" type="text"
-                value="" placeholder="Название" required minlength="2" maxlength="30" />
+                 placeholder="Название" required minLength="2" maxLength="30" />
               <span className="popup__error" id="place-name-error"></span>
             </label>
             <label className="popup__label">
-              <input className="popup__input popup__input_type_link" name="place-link" type="url" value="" id="place-link"
+              <input className="popup__input popup__input_type_link" name="place-link" type="url" id="place-link"
                 placeholder="Ссылка на картинку" required />
               <span className="popup__error" id="place-link-error"></span>
             </label>
