@@ -77,6 +77,16 @@
       })
         .then(this._getResponse);
     }
+
+    //11 task
+    toggleLikeApi(cardId, isLiked) {
+      //alert(la)
+      return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+          method: `${isLiked ? "DELETE" : "PUT"}`,
+          headers: this._headers,
+        })
+        .then(this._getResponse)
+    }
   
     //6 - removing the card
     deleteCard(id) {
@@ -86,7 +96,10 @@
       })
         .then(this._getResponse);
     }
+
   }
+
+    
 
   export const api = new Api(
     'https://mesto.nomoreparties.co/v1/cohort-52',
