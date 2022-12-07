@@ -11,11 +11,11 @@ function Card({ card, onCardClick, onDeleteClick, onCardLike }) {
     onCardLike(card);
   }
 
-  function handleDeleteLike(){
-    onDeleteClick(card);
+  function handleDeleteClick(){
+    onDeleteClick(card._id);
   }
 
-  const { currentUser } = useContext(CurrentUserContext);
+  const currentUser = useContext(CurrentUserContext);
 
   //for visibility delete-button
   const isOwn = card.owner._id === currentUser._id;
@@ -28,7 +28,7 @@ function Card({ card, onCardClick, onDeleteClick, onCardLike }) {
   return (
     <article className="element">
       <img className="element__image" alt={card.name} src={card.link} onClick={handleCardClick} />
-      <button className={cardDeleteButtonClassName} type="button" aria-label="Удалить" onClick={handleDeleteLike}></button>
+      <button className={cardDeleteButtonClassName} type="button" aria-label="Удалить" onClick={handleDeleteClick}></button>
       <div className="element__info">
         <h2 className="element__title">{card.name}</h2>
         <div className="element__like-area">

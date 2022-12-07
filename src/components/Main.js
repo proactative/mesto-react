@@ -1,5 +1,4 @@
 import React from 'react';
-import { api } from '../utils/api.js';
 import Card from './Card.js';
 
 //11th task
@@ -8,47 +7,14 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function Main(props) {
 
-  const { currentUser } = useContext(CurrentUserContext);
-  const [cards, setCards] = React.useState([]);
-
-  React.useEffect(() => {
-    Promise.all([api.getInitialCards()])
-      .then(([cards]) => {
-        setCards(cards)
-      })
-      .catch((err) => {
-        console.log(`Ошибка: ${err}`);
-      })
-  }, []);
-
-  function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);//проверка наличия like
-
-    //обновление api
-    api.toggleLikeApi(card._id, isLiked)
-      .then((newCard) => {
-        setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
-      })
-      .catch(err => console.log(err.message));
-  }
-
-  function handleDeleteCard(card) {
-    alert('1');
-
-    //обновление api
-    api.deleteCard(card._id)
-      .then((newCard) => {
-        setCards((state) => state.filter((c) => c._id === card._id ? newCard : c));
-      })
-      .catch(err => console.log(err.message));
-  }
+  const currentUser = useContext(CurrentUserContext);
 
   return (
     <main className="content">
 
       <section className="profile">
-        <div className="profile__avatar-container">
-          <img className="profile__avatar" src={currentUser.avatar} alt="Мой аватар" onClick={props.onUpdateAvatar} />
+        <div className="profile__avatar-container" onClick={props.onChangeAvatar}>
+          <img className="profile__avatar" src={currentUser.avatar} alt="Мой аватар" />
           <div className="profile__avatar-edit-sign"></div>
         </div>
         <div className="profile__info">
@@ -62,8 +28,8 @@ function Main(props) {
       </section>
 
       <section className="elements">
-        {cards.map((card) => (
-          <Card key={card._id} card={card} onCardClick={props.onCardClick} onCardLike={handleCardLike} onDeleteClick={handleDeleteCard}></Card>
+        {props.cards.map((card) => (
+          <Card key={card._id} card={card} onCardClick={props.onCardClick} onCardLike={props.handleCardLike} onDeleteClick={props.onDeleteClick}></Card>
         ))}
       </section>
     </main>
@@ -86,12 +52,3 @@ function Main(props) {
 // }
 
 export default Main
-
-//вместо пропс потом
-// onEditAvatar,
-// onEditProfile,
-// onAddPlace,
-// onCardClick,
-// onCardLike,
-// onCardDelete,
-// cards,
