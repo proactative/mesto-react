@@ -21,7 +21,6 @@ function App() {
   const [isAddElementPopupOpen, setIsAddElementPopupOpen] = React.useState(false);
   const [isConfirmDeletionPopupOpen, setIsConfirmDeletionPopupOpen] = React.useState(false);
 
-
   // 0) for context
   const [currentUser, setCurrentUser] = React.useState({ name: '', about: '', _id: '', avatar: '' });
 
@@ -93,7 +92,6 @@ function App() {
     
     const isLiked = card.likes.some(i => i._id === currentUser._id);//проверка наличия like
 
-    //обновление api
     api.toggleLikeApi(card._id, isLiked)
       .then((newCard) => {
         setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
@@ -102,7 +100,6 @@ function App() {
   }
 
   // 6) api functions:
-
   function handleUpdateUser(userName, job) {
     api
       .editProfile(userName, job)
@@ -160,12 +157,10 @@ function App() {
             onChangeAvatar={handleUpdateAvatarClick}
             onUpdateProfile={handleUpdateProfileClick}
             onAddElement={handleAddElementClick}
-
             onCardClick={handleCardClick}
             onDeleteClick={handleEConfirmDeletionClick}
             cards={cards}
             handleCardLike={handleCardLike}
-            
           />
           <Footer />
 
@@ -182,7 +177,7 @@ function App() {
   
           {/*confirm deletion*/}
           <DeleteCardPopup isOpen={isConfirmDeletionPopupOpen} onCloseIcon={closeAllPopups} onOverlay={closeViaOverlayClick} onConfirmDeletion={onConfirmDeletion} />
-
+  
         </div>
       </div>
     </CurrentUserContext.Provider>

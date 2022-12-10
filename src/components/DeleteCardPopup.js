@@ -8,7 +8,8 @@ function DeleteCardPopup({ isOpen, onCloseIcon, onOverlay, onConfirmDeletion }) 
   }
   return (
     <PopupWithForm isValid={true} isOpen={isOpen} name='deletion-confirm' title="Вы уверены?" button="Да"
-      onCloseIcon={onCloseIcon} onOverlay={onOverlay} onSubmit={handleSubmit}/>
+      onCloseIcon={onCloseIcon} onOverlay={onOverlay} onSubmit={handleSubmit} isDeleteForm={true}>
+    </PopupWithForm>
   );
 }
 

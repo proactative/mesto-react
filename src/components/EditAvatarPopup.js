@@ -3,7 +3,8 @@ import PopupWithForm from "./PopupWithForm";
 
 function EditAvatarPopup({ isOpen, onCloseIcon, onOverlay, onUpdateAvatar }) {
 
-  const avatarRef = React.useRef('');
+  const avatarRef = React.useRef(null);
+ 
 
   const [isValidInput, setIsValidInput] = React.useState(false);
   const [inputError, setInputError] = React.useState("");
@@ -25,9 +26,10 @@ function EditAvatarPopup({ isOpen, onCloseIcon, onOverlay, onUpdateAvatar }) {
   }
 
   function resetInputValues() {
-    setIsValidInput(false);
+    setIsValidInput(true);
     setIsValid(false);
-    avatarRef.current = "";
+    avatarRef.current.value = "";
+    
   }
 
   React.useEffect(() => {
@@ -44,8 +46,8 @@ function EditAvatarPopup({ isOpen, onCloseIcon, onOverlay, onUpdateAvatar }) {
 
       <fieldset className="popup__inputs">
         <label className="popup__label">
-          <input ref={avatarRef || ''} className="popup__input popup__input_type_link" name="avatar-link" type="url" id="avatar-link"
-            placeholder="https://somewebsite.com/someimage.jpg" required onChange={handleChangeInputError} defaultValue='' value="" />
+          <input ref={avatarRef} className="popup__input popup__input_type_link" name="avatar-link" type="url" id="avatar-link"
+            placeholder="https://somewebsite.com/someimage.jpg" required onChange={handleChangeInputError} />
           <span id="avatar-link-error" className={isValidInput ? 'popup__error' : 'popup__error popup__error_visible'}>{inputError || ""}</span>
         </label>
       </fieldset>

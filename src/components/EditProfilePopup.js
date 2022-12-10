@@ -1,6 +1,6 @@
 import React from 'react';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
-import { useState, useEffect, useContext } from "react";
+//import { useState, useEffect, useContext } from "react";
 import PopupWithForm from "./PopupWithForm";
 
 function EditProfilePopup({ isOpen, onCloseIcon, onUpdateUser, onOverlay }) {
@@ -81,7 +81,7 @@ function EditProfilePopup({ isOpen, onCloseIcon, onUpdateUser, onOverlay }) {
         <label className="popup__label">
           <input className="popup__input popup__input_type_name" id="full-name" name="full-name" type="text"
             placeholder="Имя" minLength="2" maxLength="40" required onChange={handleChangeName} value={name || ''} />
-          <span id="full-name-error" className={isInputDescriptionValid ? 'popup__error' : 'popup__error popup__error_visible'}>{nameError || " "}</span>
+          <span id="full-name-error" className={isInputNameValid ? 'popup__error' : 'popup__error popup__error_visible'}>{nameError || " "}</span>
         </label>
 
         <label className="popup__label">
