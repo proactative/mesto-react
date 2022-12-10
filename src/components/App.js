@@ -20,12 +20,14 @@ function App() {
   const [isUpdateProfilePopupOpen, setIsUpdateProfilePopupOpen] = React.useState(false);
   const [isAddElementPopupOpen, setIsAddElementPopupOpen] = React.useState(false);
   const [isConfirmDeletionPopupOpen, setIsConfirmDeletionPopupOpen] = React.useState(false);
-
-  // 0) for context
+  const [deletionCardId, setDeletionCardId] = React.useState(null);
+  const [selectedCard, setSelectedCard] = React.useState(null);
   const [currentUser, setCurrentUser] = React.useState({ name: '', about: '', _id: '', avatar: '' });
+  const [cards, setCards] = React.useState([]);
 
   React.useEffect(() => {
-    Promise.all([api.getUserInfo()])
+    api
+      .getUserInfo()
       .then(([userData]) => {
         setCurrentUser(userData)
       })
@@ -47,14 +49,12 @@ function App() {
     setIsAddElementPopupOpen(true);
   }
 
-  const [deletionCardId, setDeletionCardId] = React.useState(null);
   function handleEConfirmDeletionClick(cardId) {
     setDeletionCardId(cardId);
     setIsConfirmDeletionPopupOpen(true);
   }
 
   // 2) - оpen a chosen card
-  const [selectedCard, setSelectedCard] = React.useState(null);
   function handleCardClick(card) {
     setSelectedCard(card);
   }
@@ -76,10 +76,9 @@ function App() {
   }
 
   //5 state-lifting
-  const [cards, setCards] = React.useState([]);
-
   React.useEffect(() => {
-    Promise.all([api.getInitialCards()])
+    api
+      .getInitialCards()
       .then(([cards]) => {
         setCards(cards)
       })
@@ -89,7 +88,7 @@ function App() {
   }, []);
 
   function handleCardLike(card) {
-    
+
     const isLiked = card.likes.some(i => i._id === currentUser._id);//проверка наличия like
 
     api.toggleLikeApi(card._id, isLiked)
@@ -125,14 +124,14 @@ function App() {
   }
 
   function onConfirmDeletion() {
-   //обновление api
-   console.log(deletionCardId)
-   api.deleteCard(deletionCardId)
-   .then(() => {
-     setCards((cards) => cards.filter((c) => c._id !== deletionCardId));
-     setIsConfirmDeletionPopupOpen(false);
-   })
-   .catch(err => console.log(err.message));
+    //обновление api
+    console.log(deletionCardId)
+    api.deleteCard(deletionCardId)
+      .then(() => {
+        setCards((cards) => cards.filter((c) => c._id !== deletionCardId));
+        setIsConfirmDeletionPopupOpen(false);
+      })
+      .catch(err => console.log(err.message));
   }
 
   function handleAddPlaceSubmit(title, link) {
@@ -167,17 +166,17 @@ function App() {
           <ImagePopup card={selectedCard} onClose={closeAllPopups} onOverlay={closeViaOverlayClick} />
 
           {/*update avatar*/}
-          <EditAvatarPopup isOpen={isUpdateAvatarPopupOpen} onCloseIcon={closeAllPopups} onOverlay={closeViaOverlayClick}  onUpdateAvatar={handleUpdateAvatar} />
-         
+          <EditAvatarPopup isOpen={isUpdateAvatarPopupOpen} onCloseIcon={closeAllPopups} onOverlay={closeViaOverlayClick} onUpdateAvatar={handleUpdateAvatar} />
+
           {/*update profile*/}
           <EditProfilePopup isOpen={isUpdateProfilePopupOpen} onCloseIcon={closeAllPopups} onOverlay={closeViaOverlayClick} onUpdateUser={handleUpdateUser} />
 
           {/*add element*/}
           <AddPlacePopup isOpen={isAddElementPopupOpen} onCloseIcon={closeAllPopups} onOverlay={closeViaOverlayClick} onAddElement={handleAddPlaceSubmit} />
-  
+
           {/*confirm deletion*/}
           <DeleteCardPopup isOpen={isConfirmDeletionPopupOpen} onCloseIcon={closeAllPopups} onOverlay={closeViaOverlayClick} onConfirmDeletion={onConfirmDeletion} />
-  
+
         </div>
       </div>
     </CurrentUserContext.Provider>

@@ -4,7 +4,6 @@ import PopupWithForm from "./PopupWithForm";
 function EditAvatarPopup({ isOpen, onCloseIcon, onOverlay, onUpdateAvatar }) {
 
   const avatarRef = React.useRef(null);
- 
 
   const [isValidInput, setIsValidInput] = React.useState(false);
   const [inputError, setInputError] = React.useState("");
@@ -29,7 +28,7 @@ function EditAvatarPopup({ isOpen, onCloseIcon, onOverlay, onUpdateAvatar }) {
     setIsValidInput(true);
     setIsValid(false);
     avatarRef.current.value = "";
-    
+
   }
 
   React.useEffect(() => {

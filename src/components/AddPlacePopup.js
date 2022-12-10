@@ -1,7 +1,7 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
 
-function AddPlacePopup({isOpen, onCloseIcon, onOverlay, onAddElement}) {
+function AddPlacePopup({ isOpen, onCloseIcon, onOverlay, onAddElement }) {
 
   const [placeName, setPlaceName] = React.useState("");
   const [placeLink, setPlaceLink] = React.useState("");
@@ -62,15 +62,15 @@ function AddPlacePopup({isOpen, onCloseIcon, onOverlay, onAddElement}) {
         <label className="popup__label">
           <input className="popup__input popup__input_type_place-name" name="place-name" id="place-name" type="text"
             placeholder="Название" required minLength="2" maxLength="30" onChange={handleChangePlaceName} value={placeName || ''} />
-          <span className={(!isValidInputPlaceName && isOpen )? 'popup__error popup__error_visible' : 'popup__error'} id="place-name-error">{placeNameError || ""}</span>
+          <span className={(!isValidInputPlaceName && isOpen) ? 'popup__error popup__error_visible' : 'popup__error'} id="place-name-error">{placeNameError || ""}</span>
         </label>
         <label className="popup__label">
           <input className="popup__input popup__input_type_link" name="place-link" type="url" id="place-link"
             placeholder="Ссылка на картинку" required onChange={handleChangePlaceLink} value={placeLink || ''} />
-          <span className={(!isValidInputPlaceLink && isOpen )? 'popup__error popup__error_visible' : 'popup__error'} id="place-link-error">{placeLinkError || ""}</span>
+          <span className={(!isValidInputPlaceLink && isOpen) ? 'popup__error popup__error_visible' : 'popup__error'} id="place-link-error">{placeLinkError || ""}</span>
         </label>
       </fieldset>
-  
+
     </PopupWithForm>
   );
 }

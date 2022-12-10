@@ -1,25 +1,24 @@
 import React from 'react';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
-//import { useState, useEffect, useContext } from "react";
 import PopupWithForm from "./PopupWithForm";
 
 function EditProfilePopup({ isOpen, onCloseIcon, onUpdateUser, onOverlay }) {
   const currentUser = React.useContext(CurrentUserContext);
-  //console.log(currentUser);
 
   const [name, setName] = React.useState(currentUser.name);
   const [description, setDescription] = React.useState(currentUser.about);
 
+  const [isInputNameValid, setIsInputNameValid] = React.useState(true);
+  const [isInputDescriptionValid, setIsInputDescriptionValid] = React.useState(true);
 
-  React.useEffect(() => {
-    setName(currentUser.name);
-    setDescription(currentUser.about);
-  }, [currentUser]);
+  const [nameError, setNameError] = React.useState("");
+  const [descriptionError, setDescriptionError] = React.useState("");
+
+  const [isValid, setIsValid] = React.useState(false);
 
   function handleChangeName(e) {
     handleChangeInputError(e, setNameError, setIsInputNameValid);
     setName(e.target.value);
-
   }
 
   function handleChangeDescription(e) {
@@ -33,15 +32,6 @@ function EditProfilePopup({ isOpen, onCloseIcon, onUpdateUser, onOverlay }) {
     // Передаём значения управляемых компонентов во внешний обработчик
     onUpdateUser(name, description);
   }
-
-  //checking validity
-  const [isInputNameValid, setIsInputNameValid] = React.useState(true);
-  const [isInputDescriptionValid, setIsInputDescriptionValid] = React.useState(true);
-
-  const [nameError, setNameError] = React.useState("");
-  const [descriptionError, setDescriptionError] = React.useState("");
-
-  const [isValid, setIsValid] = React.useState(false);
 
   const handleChangeInputError = (e, setInputError, setInputValid) => {
     if (e.target.validity.valid) {
@@ -71,7 +61,6 @@ function EditProfilePopup({ isOpen, onCloseIcon, onUpdateUser, onOverlay }) {
     setName(currentUser.name);
     setDescription(currentUser.about);
   }, [isOpen, onCloseIcon]);
-
 
   return (
     <PopupWithForm name="edit-profile" title="Редактировать&nbsp;профиль" button="Сохранить"

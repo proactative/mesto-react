@@ -36,19 +36,4 @@ function Main(props) {
   )
 }
 
-// used for imperative approach
-
-// function handleEditAvatarClick() {
-//   document.querySelector('.popup_type_update-avatar').classList.add('popup_opened');
-
-// }
-
-// function handleEditProfileClick() {
-//  document.querySelector('.popup_type_edit-profile').classList.add('popup_opened');
-// }
-
-// function handleAddPlaceClick() {
-//   document.querySelector('.popup_type_add-element').classList.add('popup_opened');
-// }
-
 export default Main

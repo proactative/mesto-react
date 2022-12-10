@@ -11,7 +11,7 @@ function Card({ card, onCardClick, onDeleteClick, onCardLike }) {
     onCardLike(card);
   }
 
-  function handleDeleteClick(){
+  function handleDeleteClick() {
     onDeleteClick(card._id);
   }
 
@@ -19,7 +19,7 @@ function Card({ card, onCardClick, onDeleteClick, onCardLike }) {
 
   //for visibility delete-button
   const isOwn = card.owner._id === currentUser._id;
-  const cardDeleteButtonClassName =  isOwn ? 'element__delete-button_visible element__delete-button ' : 'element__delete-button';
+  const cardDeleteButtonClassName = isOwn ? 'element__delete-button_visible element__delete-button ' : 'element__delete-button';
 
   // for like-button 
   const isLiked = card.likes.some(i => i._id === currentUser._id);
