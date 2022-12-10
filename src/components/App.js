@@ -28,7 +28,7 @@ function App() {
   React.useEffect(() => {
     api
       .getUserInfo()
-      .then(([userData]) => {
+      .then((userData) => {
         setCurrentUser(userData)
       })
       .catch((err) => {
@@ -79,7 +79,7 @@ function App() {
   React.useEffect(() => {
     api
       .getInitialCards()
-      .then(([cards]) => {
+      .then((cards) => {
         setCards(cards)
       })
       .catch((err) => {

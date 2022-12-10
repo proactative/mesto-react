@@ -13,31 +13,24 @@ function EditAvatarPopup({ isOpen, onCloseIcon, onOverlay, onUpdateAvatar }) {
     if (e.target.validity.valid) {
       setInputError("");
       setIsValidInput(true);
+      setIsValid(true);
     } else {
       setInputError(e.target.validationMessage);
       setIsValidInput(false);
+      setIsValid(false);
     }
   };
 
   function handleSubmit(e) {
     e.preventDefault();
-    onUpdateAvatar(avatarRef.current);
+    onUpdateAvatar(avatarRef.current.value);
   }
 
-  function resetInputValues() {
+  React.useEffect(() => {
     setIsValidInput(true);
     setIsValid(false);
     avatarRef.current.value = "";
-
-  }
-
-  React.useEffect(() => {
-    resetInputValues();
   }, [isOpen, onCloseIcon]);
-
-  React.useEffect(() => {
-    setIsValid(isValidInput);
-  }, [isValidInput]);
 
   return (
     <PopupWithForm name="update-avatar" title="Обновить&nbsp;аватар" button="Сохранить"
