@@ -10,7 +10,7 @@ Users have an ability to edit their profile, add new photos, remove unwanted one
 It is also possible to view the photographs enlarged.
 
 
-## **Technologies**
+## **Stack & technologies**
 
 - ReactJS
 
