@@ -24,7 +24,7 @@ It is also possible to view the photographs enlarged.
 
 - API
 
-- HTML5 and CSS
+- HTML5 and CSS3
 
 - BEM (Nested)
 
